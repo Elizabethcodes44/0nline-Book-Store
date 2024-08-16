@@ -7,6 +7,7 @@ import Footer from './Components/Footer/footer';
 
 import Trending from './Components/Home/trending';
 import Deals from './Components/Home/deals';
+import Categories from './Components/Home/categories';
 export default function App() {
  return(
   <Router>
@@ -20,6 +21,7 @@ export default function App() {
       
       <Route path="/trending" element={<Trending/>}></Route>
       <Route path="/deals"  element={<Deals/>}></Route>
+      <Route path="/categories" element= {<Categories/>}></Route>
 
     </Routes>
    
