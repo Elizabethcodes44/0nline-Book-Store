@@ -19,7 +19,7 @@ import NonFictionCat from './Components/Home/Categories/NONFICTION';
 
 import PhotographyCat from './Components/Home/Categories/PHOTOGRAPHY';
 import SciFiCat from './Components/Home/Categories/SCIFI';
-import TechnologyCat from './Components/Home/Categories/Technology';
+//import TechnologyCat from './Components/Home/Categories/Technology';
 export default function App() {
  return(
   
@@ -42,7 +42,7 @@ export default function App() {
       <Route path="/thrillercat" element = {<ThrillerCat/>}></Route>
       <Route path="/romancecat" element = {<RomanceCat/>}></Route>
       <Route path="/nonfictioncat" element = {<NonFictionCat/>}></Route>
-      <Route path="/technologycat" element = {<TechnologyCat/>}></Route>
+      {/*<Route path="/technologycat" element = {<TechnologyCat/>}></Route> */}
       <Route path="/photographycat" element = {<PhotographyCat/>}></Route>
       <Route path="/scificat" element = {<SciFiCat/>}></Route>
       <Route path="/thriller" element = {<Thriller/>}></Route>
