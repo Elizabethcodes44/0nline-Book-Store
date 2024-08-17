@@ -19,7 +19,7 @@ import NonFictionCat from './Components/Home/Categories/NONFICTION';
 
 import PhotographyCat from './Components/Home/Categories/PHOTOGRAPHY';
 import SciFiCat from './Components/Home/Categories/SCIFI';
-import TechnologyCat from './Components/Home/Categories/technology';
+import TechnologyCat from './Components/Home/Categories/Technology';
 export default function App() {
  return(
   
