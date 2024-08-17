@@ -1,4 +1,4 @@
-import Deals from "./deals";
+import Deals from "./Deals/deals";
 import SearchBar from "./search";
 
 export default function Home() {
