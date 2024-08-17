@@ -14,11 +14,12 @@ import Romance from './Components/Home/Deals/romance';
 import NonFiction from './Components/Home/Deals/nonfiction';
 import Categories from './Components/Home/Categories/CATEGORIES';
 import ThrillerCat from './Components/Home/Categories/THRILLER';
-import RomanceCat from './Components/Home/Categories/Romantic';
+import RomanceCat from './Components/Home/Categories/ROMANTIC';
 import NonFictionCat from './Components/Home/Categories/NONFICTION';
-import TechnologyCat from './Components/Home/Categories/Technology';
+
 import PhotographyCat from './Components/Home/Categories/PHOTOGRAPHY';
 import SciFiCat from './Components/Home/Categories/SCIFI';
+import TechnologyCat from './Components/Home/Categories/technology';
 export default function App() {
  return(
   
