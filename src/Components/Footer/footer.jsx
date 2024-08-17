@@ -1,5 +1,5 @@
 import first from "../../assets/first.jpg";
-import second from "../../assets/center.jpg";
+import second from "../../assets/Center.jpg";
 import third from "../../assets/last.jpg";
 export default function Footer() {
   return (
