@@ -19,7 +19,7 @@ import NonFictionCat from './Components/Home/Categories/NONFICTION';
 
 import PhotographyCat from './Components/Home/Categories/PHOTOGRAPHY';
 import SciFiCat from './Components/Home/Categories/SCIFI';
-import TechnologyCat from './Components/Home/Categories/Technology';
+import TechnologyCat from './Components/Home/Categories/techbooks';
 import WishList from './Components/Home/wishlist';
 import Cart from './Components/Home/cart';
 import AppProvider from './AppContext';
