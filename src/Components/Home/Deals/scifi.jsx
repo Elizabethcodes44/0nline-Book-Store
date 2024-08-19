@@ -56,7 +56,7 @@ export default function SciFi() {
           {deals.map((book, index) => (
             <div
               key={index}
-              className="book-itemborder p-4 rounded-md shadow-md"
+              className="book-item border p-4 rounded-md shadow-md"
             >
               <img
                 src={book.cover_image}
