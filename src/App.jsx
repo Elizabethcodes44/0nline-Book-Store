@@ -19,10 +19,13 @@ import NonFictionCat from './Components/Home/Categories/NONFICTION';
 
 import PhotographyCat from './Components/Home/Categories/PHOTOGRAPHY';
 import SciFiCat from './Components/Home/Categories/SCIFI';
-//import TechnologyCat from './Components/Home/Categories/Technology';
+import TechnologyCat from './Components/Home/Categories/Technology';
+import WishList from './Components/Home/wishlist';
+import Cart from './Components/Home/cart';
+import AppProvider from './AppContext';
 export default function App() {
  return(
-  
+  <AppProvider>
   <Router>
   <div className='appContainer' style={{ fontFamily: 'Poppins, sans-serif' }}>
    
@@ -42,10 +45,12 @@ export default function App() {
       <Route path="/thrillercat" element = {<ThrillerCat/>}></Route>
       <Route path="/romancecat" element = {<RomanceCat/>}></Route>
       <Route path="/nonfictioncat" element = {<NonFictionCat/>}></Route>
-      {/*<Route path="/technologycat" element = {<TechnologyCat/>}></Route> */}
+      <Route path="/technologycat" element = {<TechnologyCat/>}></Route> 
       <Route path="/photographycat" element = {<PhotographyCat/>}></Route>
       <Route path="/scificat" element = {<SciFiCat/>}></Route>
       <Route path="/thriller" element = {<Thriller/>}></Route>
+      <Route path="/cart" element = {<Cart/>}></Route>
+      <Route path="/wishlist" element = {<WishList/>}></Route>
 
     </Routes>
    
@@ -55,7 +60,7 @@ export default function App() {
     </Footer>
   </div>
   </Router>
-  
+  </AppProvider>
  )
 }
 

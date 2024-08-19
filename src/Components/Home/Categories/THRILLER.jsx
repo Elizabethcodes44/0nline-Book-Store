@@ -1,8 +1,9 @@
 import {useState, useEffect} from "react";
+import love from "../../../assets/wishlist.png";
 export default function ThrillerCat () {
     const [deals, setDeals] = useState([])
     const [hasBooks, setHasBooks] = useState(false);
-  useEffect(() => {
+    useEffect(() => {
     fetch("/data.json")
     .then((response) => response.json())
     .then((data) => {
@@ -28,7 +29,10 @@ export default function ThrillerCat () {
                   <p>{book.author}</p>
                   <img src={book.cover_image} alt={`${book.title} cover`} />
                   <p>{book.plot_summary}</p>
+                  <div>
+                    <img src = {love}/>
                   <button>Add to cart</button>
+                  </div>
                 </div>
               )) 
             ) : (

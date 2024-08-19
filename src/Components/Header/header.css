@@ -4,3 +4,19 @@
     z-index: 9999;
     top: 0;
 }
+.badge {
+    position: absolute;
+    top: -5px;  /* Adjust this value to position vertically */
+    right: -5px; /* Adjust this value to position horizontally */
+    background-color: #4CAF50; /* Adjust the background color as needed */
+    color: white;
+    border-radius: 50%;
+    height: 1.25rem; /* Adjust the size as needed */
+    width: 1.25rem;  /* Adjust the size as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem; /* Adjust the font size */
+    z-index: 10; /* Ensure the badge stays on top */
+ }
+ 

@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.card {
+    @apply w-80 cursor-pointer border-b-4 rounded-md   h-[250px] text-center px-3 py-7 self-end  ;
+}
+.card-active{
+   @apply h-96 border-4 border-brown shadow-lg;
+}

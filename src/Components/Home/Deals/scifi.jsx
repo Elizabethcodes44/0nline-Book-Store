@@ -1,4 +1,5 @@
 import {useState, useEffect} from "react";
+import love from "../../../assets/wishlist.png";
 export default function SciFi () {
     const [deals, setDeals] = useState([])
     const [hasBooks, setHasBooks] = useState(false);
@@ -24,6 +25,7 @@ export default function SciFi () {
                   <p>{book.author}</p>
                   <img src={book.cover_image} alt={`${book.title} cover`} />
                   <p>{book.plot_summary}</p>
+                  <img src= {love}/>
                   <button>Add to cart</button>
                 </div>
               )) 
