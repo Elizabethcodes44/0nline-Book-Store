@@ -1,6 +1,4 @@
-Certainly! Here’s a README template for your online bookstore using the format you provided, adjusted to fit the features of your app:
 
----
 
 # 📚 Online Bookstore 📖
 
