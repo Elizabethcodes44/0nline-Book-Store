@@ -33,13 +33,28 @@ export default function Thriller() {
     });
   };
 
-  const handleAddToCart = () => {
-    setCartCount(prevCount => {
-      console.log("Cart count before:", prevCount);
-      const newCount = prevCount + 1;
-      console.log("Cart count after:", newCount);
-      return newCount; })
+  const handleAddToCart = (book) => {
+    try {
+      // Extract only the necessary fields for storage
+      const { id, title, author, cover_image } = book;
+      const bookToStore = { id, title, author, cover_image };
+  
+      // Get existing cart items or initialize an empty array
+      const existingCart = JSON.parse(localStorage.getItem('cartItems')) || [];
+      
+      // Add the new book to the cart
+      const updatedCart = [...existingCart, bookToStore];
+      
+      // Store the updated cart back in localStorage
+      localStorage.setItem('cartItems', JSON.stringify(updatedCart));
+      
+      // Update cart count in context
+      setCartCount(prevCount => prevCount + 1);
+    } catch (error) {
+      console.error('Error updating cart:', error);
+    }
   };
+  
   return (
     <div className="p-4">
       {hasBooks ? (

@@ -1,5 +1,6 @@
 import {useState, useEffect} from "react";
 import love from "../../../assets/wishlist.png";
+import { useAppContext } from "../../../AppContext";
 export default function Romance () {
     const [deals, setDeals] = useState([])
     const [hasBooks, setHasBooks] = useState(false);

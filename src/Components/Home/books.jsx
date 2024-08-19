@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "../../index.css";
+import { Autoplay } from "swiper/modules";
 export default function BooksList() {
   const [bookList, setBookList] = useState([]);
-
+  const [active, setActive] = useState(null);
   useEffect(() => {
     //fetch data from the json fıle
     fetch("/data.json")
@@ -13,32 +16,36 @@ export default function BooksList() {
       .catch((error) => console.error("Error Fetching book list: ", error));
   }, []);
   return (
-    <div className="py-10">
-      <h1 className="text-2xl text-center mb-5 mt-4">Books</h1>
-    
+    <div className="h-screen flex items-center justify-center">
+     <div className="max-w-5xl">
+     <Swiper
+          spaceBetween={50}
+          slidesPerView={3}
+          
+          loop= {true}
+          centeredSlides={true}
+          speed={800}
+          autoplay= {{
+            delay: 3000,
+          }}
+          modules={[Autoplay]}
+          
+        >
         {Array.isArray(bookList) &&
           bookList.map((book, index) => (
-            < div className="swiper-slide h-200 w-800" key={index}>
+            <SwiperSlide key={index} className="">
              
                   <img src={book.cover_image} className="w-40 h-40 object-cover rounded-lg mb-4"/>
                   <h1>{book.title}</h1>
                  
-                </div>
              
-            
+             </SwiperSlide>
           ))}
-        <div >
-          <div >
-            <ion-icon name="arrow-back-outline"></ion-icon>
-          </div>
-          <div >
-            <ion-icon name="arrow-forward-outline"></ion-icon>
-          </div>
-         
+
+        
+        </Swiper>
         </div>
        
-     
-     
     </div>
   );
 }
