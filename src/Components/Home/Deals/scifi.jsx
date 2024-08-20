@@ -31,23 +31,40 @@ export default function SciFi() {
 
   const handleAddToCart = (book) => {
     try {
-      // Extract only the necessary fields for storage
-      const { id, title, author, cover_image } = book;
-      const bookToStore = { id, title, author, cover_image };
-  
-      // Get existing cart items or initialize an empty array
-      const existingCart = JSON.parse(localStorage.getItem('cartItems')) || [];
-      const updatedCart = [...existingCart, bookToStore];
-      
-      // Store the updated cart back in localStorage
-      localStorage.setItem('cartItems', JSON.stringify(updatedCart));
-      
-      // Update cart count in context
-      setCartCount(prevCount => prevCount + 1);
-    } catch (error) {
-      console.error('Error updating cart:', error);
+      // Check if the book has the necessary properties
+      const { id, title, author, cover_image, price, genre, rating, plot_summary } = book;
+
+      if (!id || !title || !author || !cover_image || !rating || !genre || !price || !plot_summary) {
+        console.error('Book is missing essential properties:', book);
+        return;
+      }
+       // Create a bookToStore object with necessary properties
+    const bookToStore = { id, title, author, cover_image, price, genre, rating, plot_summary, quantity: 1 };
+
+    // Get existing cart items or initialize an empty array
+    const existingCart = JSON.parse(localStorage.getItem('cartItems')) || [];
+    console.log(existingCart);
+
+    // Check if the book is already in the cart
+    const bookIndex = existingCart.findIndex(item => item.id === bookToStore.id);
+    if (bookIndex !== -1) {
+      // If already in the cart, update the quantity
+      existingCart[bookIndex].quantity += 1;
+    } else {
+      // If not in the cart, add the new book
+      existingCart.push(bookToStore);
     }
-  };
+
+    // Store the updated cart back in localStorage
+    localStorage.setItem('cartItems', JSON.stringify(existingCart));
+
+    // Update cart count in context
+    setCartCount(prevCount => prevCount + 1);
+  } catch (error) {
+    console.error('Error updating cart:', error);
+  }
+};
+
       
   return (
     <div className="p-4">
@@ -68,7 +85,7 @@ export default function SciFi() {
               <p>{book.plot_summary}</p>
               <div className="mt-2 flex items-center">
                 <img src={love} className="w-8 h-8 cursor-pointer mr-4"  onClick={handleAddToWishlist} />
-                <button className="bg-brown text-white py-2 px-4 rounded"  onClick={handleAddToCart}>
+                <button className="bg-brown text-white py-2 px-4 rounded"   onClick={() => handleAddToCart(book)}>
                   Add to cart
                 </button>
               </div>
@@ -76,7 +93,7 @@ export default function SciFi() {
           ))}
         </div>
       ) : (
-        <p>No trending books currently available for this genre</p> // Render nothing if the book is not trending
+        <p>No best sellers currently available for this genre</p> // Render nothing if the book is not trending
       )}
     </div>
   );

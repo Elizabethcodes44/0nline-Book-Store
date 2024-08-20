@@ -29,25 +29,41 @@ export default function TechnologyCat () {
 
   const handleAddToCart = (book) => {
     try {
-      // Extract only the necessary fields for storage
-      const { id, title, author, cover_image } = book;
-      const bookToStore = { id, title, author, cover_image };
-  
-      // Get existing cart items or initialize an empty array
-      const existingCart = JSON.parse(localStorage.getItem('cartItems')) || [];
-      const updatedCart = [...existingCart, bookToStore];
-      
-      // Store the updated cart back in localStorage
-      localStorage.setItem('cartItems', JSON.stringify(updatedCart));
-      
-      // Update cart count in context
-      setCartCount(prevCount => prevCount + 1);
-    } catch (error) {
-      console.error('Error updating cart:', error);
+      // Check if the book has the necessary properties
+      const { id, title, author, cover_image, price, genre, rating, category, plot_summary } = book;
+
+      if (!id || !title || !author || !cover_image || !rating || !genre || !price || !category || !plot_summary) {
+        console.error('Book is missing essential properties:', book);
+        return;
+      }
+       // Create a bookToStore object with necessary properties
+    const bookToStore = { id, title, author, cover_image, category, price, genre, rating, plot_summary, quantity: 1 };
+
+    // Get existing cart items or initialize an empty array
+    const existingCart = JSON.parse(localStorage.getItem('cartItems')) || [];
+    console.log(existingCart);
+
+    // Check if the book is already in the cart
+    const bookIndex = existingCart.findIndex(item => item.id === bookToStore.id);
+    if (bookIndex !== -1) {
+      // If already in the cart, update the quantity
+      existingCart[bookIndex].quantity += 1;
+    } else {
+      // If not in the cart, add the new book
+      existingCart.push(bookToStore);
     }
-  };
+
+    // Store the updated cart back in localStorage
+    localStorage.setItem('cartItems', JSON.stringify(existingCart));
+
+    // Update cart count in context
+    setCartCount(prevCount => prevCount + 1);
+  } catch (error) {
+    console.error('Error updating cart:', error);
+  }
+};
     return(
-<div>
+<div className="p-4">
       {hasBooks ? (
          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
         {deals.map((book, index) => (
@@ -56,10 +72,13 @@ export default function TechnologyCat () {
                   <img src={book.cover_image} alt={`${book.title} cover`  }  className="w-full h-60 object-cover mb-2" />
                   <h2 className="text-xl font-bold mb-1">{book.title}</h2>
                   <p className="text-gray-700 mb-2">{book.author}</p>
+                  <p className="text-gray-700 mb-2">Rating: {book.rating}</p>
+                  <p className="text-gray-700 mb-2">Category: {book.category}</p>
+                  <p className="text-gray-700 mb-2">Price: ${book.price}</p>
                   <p>{book.plot_summary}</p>
                   <div className="mt-2 flex items-center">
                   <img src = {love} className="w-8 h-8 cursor-pointer mr-4"  onClick={handleAddToWishlist}/>
-                  <button className="bg-brown text-white py-2 px-4 rounded"  onClick={handleAddToCart}>Add to cart</button>
+                  <button className="bg-brown text-white py-2 px-4 rounded"   onClick={() => handleAddToCart(book)}>Add to cart</button>
                   </div>
                 </div>
               ))}

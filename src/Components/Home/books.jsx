@@ -3,9 +3,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "../../index.css";
 import { Autoplay } from "swiper/modules";
+import love from "../../assets/wishlist.png";
 export default function BooksList() {
   const [bookList, setBookList] = useState([]);
-  const [active, setActive] = useState(null);
+  
   useEffect(() => {
     //fetch data from the json fıle
     fetch("/data.json")
@@ -36,7 +37,11 @@ export default function BooksList() {
             <SwiperSlide key={index} className="">
              
                   <img src={book.cover_image} className="w-40 h-40 object-cover rounded-lg mb-4"/>
-                  <h1>{book.title}</h1>
+                  <h1>Author: {book.author}</h1>
+                  <h1>Format: {book.format}</h1>
+                  <h1>Language: {book.language}</h1>
+                  <img src= {love}
+                  className="h-10 w-10"/>
                  
              
              </SwiperSlide>
