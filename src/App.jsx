@@ -23,6 +23,7 @@ import TechnologyCat from './Components/Home/Categories/techbooks';
 import WishList from './Components/Home/wishlist';
 import Cart from './Components/Home/cart';
 import AppProvider from './AppContext';
+import SearchResults from './Components/Home/searchresult';
 export default function App() {
  return(
   <AppProvider>
@@ -51,6 +52,7 @@ export default function App() {
       <Route path="/thriller" element = {<Thriller/>}></Route>
       <Route path="/cart" element = {<Cart/>}></Route>
       <Route path="/wishlist" element = {<WishList/>}></Route>
+      <Route path="/search-results" element={<SearchResults />} />
 
     </Routes>
    

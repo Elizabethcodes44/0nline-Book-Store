@@ -54,8 +54,10 @@ export default function Romance () {
                 <div key={index} className="book-item  border p-4 rounded-md shadow-md">
                  
                   <img src={book.cover_image} alt={`${book.title} cover`} className="w-full h-60 object-cover mb-2"/>
-                  <h2 className="text-xl font-bold mb-1">{book.title}</h2>
-                  <p className="text-gray-700 mb-2">{book.author}</p>
+                  <h2 className="text-xl font-bold mb-1">{book.author}</h2>
+                  <p className="text-gray-700 mb-2">Rating: {book.rating}</p>
+                  <p className="text-gray-700 mb-2">Genre: {book.genre}</p>
+                  <p className="text-gray-700 mb-2">Price: ${book.price}</p>
                   <p>{book.plot_summary}</p>
                   <div className="mt-2 flex items-center">
                   <img src={love} className="w-8 h-8 cursor-pointer mr-4"  onClick={handleAddToWishlist} />
