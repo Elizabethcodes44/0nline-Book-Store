@@ -55,6 +55,7 @@ export default function Cart() {
               <p className="text-gray-700 mb-2"> Author: {item.author}</p>
               <p className="text-gray-700 mb-2">Genre: {item.genre}</p>
               <p className="text-gray-700 mb-2">Category: {item.category}</p>
+              <p className="text-gray-700 mb-2">Price: $ {item.price}</p>
               <div className="flex justify-between items-center  mx-5">
               <button
                   onClick={() => handleDeductQuantity(index)}
